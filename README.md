@@ -4,21 +4,11 @@
 
 ## Introduction
 
-This is a Angular project for the course of _SoftUni - Angular - June 2023_. It is an **ESTATE E-COMMERCE** , where users can find his dream new home. Registered users can **create, edit, delete, follow and comment offers**.
+This is a Angular project . It is an **ESTATE E-COMMERCE** , where users can find his dream new home. Registered users can **create, edit, delete, follow and comment offers**.
 
 ---
 
-## Built with
 
--[Angular](https://angular.io/)
-
--[TailwindCSS](https://tailwindcss.com/)
-
--[Moment.js](https://momentjs.com/)
-
--[SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
-
----
 
 ## Use
 
