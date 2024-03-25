@@ -1,0 +1,62 @@
+<div class="w-full h-screen flex">
+    <img src="../../../assets/images/contact-us.jpg" alt="background"
+        class="object-cover object-center h-screen w-7/12 lg:block sm:hidden md:hidden hidden">
+    <div
+        class="bg-white lg:flex lg:flex-col lg:justify-center lg:items-center lg:w-5/12 lg:shadow-lg md:flex md:flex-col md:justify-center md:items-center md:w-full sm:flex sm:flex-col sm:justify-center sm:items-center sm:w-full flex flex-col justify-center items-center w-full">
+        <h1 class="text-4xl font-bold text-slate-800 mb-4">{{contactUsConstants.heading}}</h1>
+        <h2 *ngIf="errorServer" class="text-lg font-bold text-rose-600 mb-4">{{errorMsg}}</h2>
+        <form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()" class="w-2/3 text-center">
+            <label for="contact-us-fullName"
+                class="text-slate-800 self-start text-lg">{{contactUsConstants.fullName}}</label>
+            <input id="contact-us-fullName" type="text" formControlName="fullName"
+                placeholder={{contactUsConstants.fullNamePlaceholder}} autocomplete="off"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="contactUsForm.get('fullName')?.invalid && 
+                (contactUsForm.get('fullName')?.dirty || 
+                contactUsForm.get('fullName')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{contactUsConstants.fullNameInvalidText}}</p>
+
+            <label for="contact-us-email" class="text-slate-800 self-start text-lg">{{contactUsConstants.email}}</label>
+            <input id="contact-us-email" type="email" formControlName="email"
+                placeholder={{contactUsConstants.emailPlaceholder}} autocomplete="off"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="contactUsForm.get('email')?.invalid && 
+                (contactUsForm.get('email')?.dirty || 
+                contactUsForm.get('email')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{contactUsConstants.emailInvalidText}}</p>
+
+            <label for="contact-us-phone"
+                class="text-slate-800 self-start text-lg">{{contactUsConstants.phoneNumber}}</label>
+            <input id="contact-us-phone" type="number" formControlName="phone"
+                placeholder={{contactUsConstants.phoneNumberPlaceholder}} autocomplete="off"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="contactUsForm.get('phone')?.invalid && 
+                (contactUsForm.get('phone')?.dirty || 
+                contactUsForm.get('phone')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{contactUsConstants.phoneNumberInvalidText}}</p>
+
+            <label for="contact-us-message"
+                class="text-slate-800 self-start text-lg">{{contactUsConstants.message}}</label>
+            <textarea id="contact-us-message" formControlName="message" rows="4" cols="50"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 "></textarea>
+
+            <p *ngIf="contactUsForm.get('message')?.invalid && 
+                (contactUsForm.get('message')?.dirty || 
+                contactUsForm.get('message')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{contactUsConstants.messageInvalidText}}</p>
+
+            <button [disabled]="this.contactUsForm.invalid" type="submit" class="btn btn-blue my-4 group relative"
+                [class.cursor-not-allowed]="contactUsForm.invalid"
+                [class.cursor-pointer]="!contactUsForm.invalid">{{contactUsConstants.btnText}}<span
+                    *ngIf="this.contactUsForm.invalid"
+                    class="opacity-0 group-hover:opacity-100 absolute flex text-red-500 whitespace-nowrap left-24 top-2">
+                    All inputs are required.
+                </span></button>
+
+        </form>
+    </div>
+
+</div>

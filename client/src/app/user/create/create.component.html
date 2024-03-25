@@ -1,0 +1,99 @@
+<div class="w-full h-screen flex">
+    <img src="../../../assets/images/create.jpg" alt="background"
+        class="object-cover object-center h-screen w-7/12 lg:block sm:hidden md:hidden hidden">
+    <div
+        class="bg-white lg:flex lg:flex-col lg:justify-center lg:items-center lg:w-5/12 lg:shadow-lg md:flex md:flex-col md:justify-center md:items-center md:w-full sm:flex sm:flex-col sm:justify-center sm:items-center sm:w-full flex flex-col justify-center items-center w-full">
+        <h1 class="text-4xl font-bold text-slate-800 mb-4">{{createConstants.heading}}</h1>
+        <h2 *ngIf="errorServer" class="text-lg font-bold text-rose-600 mb-4">{{errorMsg}}</h2>
+        <form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="w-2/3 text-center">
+
+            <label for="create-title" class="text-slate-800 self-start text-lg">{{createConstants.title}}</label>
+            <input id="create-title" type="text" formControlName="title"
+                placeholder={{createConstants.titlePlaceholder}}
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="createForm.get('title')?.invalid && 
+                (createForm.get('title')?.dirty || 
+                createForm.get('title')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{createConstants.titleInvalidText}}</p>
+
+
+            <label for="create-location" class="text-slate-800 self-start text-lg">{{createConstants.location}}</label>
+            <input id="create-location" type="text" formControlName="location"
+                placeholder={{createConstants.locationPlaceholder}} autocomplete="off"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="createForm.get('location')?.invalid && 
+                (createForm.get('location')?.dirty || 
+                createForm.get('location')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{createConstants.locationInvalidText}}</p>
+
+            <!-- QUADRATURE -->
+
+            <label for="create-quadrature"
+                class="text-slate-800 self-start text-lg">{{createConstants.quadrature}}</label>
+            <input id="create-quadrature" type="number" formControlName="quadrature"
+                placeholder={{createConstants.quadraturePlaceholder}} autocomplete="off"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="createForm.get('quadrature')?.invalid && 
+            (createForm.get('quadrature')?.dirty || 
+            createForm.get('quadrature')?.touched || 
+            isSubmitted)" class="text-red-500 text-xs ">{{createConstants.quadratureInvalidText}}</p>
+
+            <!-- FLOORS -->
+
+            <label for="create-floors" class="text-slate-800 self-start text-lg">{{createConstants.floors}}</label>
+            <input id="create-floors" type="number" formControlName="floors"
+                placeholder={{createConstants.floorsPlaceholder}} autocomplete="off"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="createForm.get('floors')?.invalid && 
+            (createForm.get('floors')?.dirty || 
+            createForm.get('floors')?.touched || 
+            isSubmitted)" class="text-red-500 text-xs ">{{createConstants.floorsInvalidText}}</p>
+
+            <label for="create-imageLink" class="text-slate-800 self-start text-lg">{{createConstants.imageUrl}}</label>
+            <input id="create-imageLink" type="text" formControlName="imageUrl"
+                placeholder={{createConstants.imageUrlPlaceholder}} autocomplete="off"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="createForm.get('imageUrl')?.invalid && 
+                (createForm.get('imageUrl')?.dirty || 
+                createForm.get('imageUrl')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{createConstants.imageUrlInvalidText}}</p>
+
+
+
+            <label for="create-price" class="text-slate-800 self-start text-lg">{{createConstants.price}}</label>
+            <input id="create-price" type="number" formControlName="price"
+                placeholder={{createConstants.pricePlaceholder}} autocomplete="off"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 ">
+
+            <p *ngIf="createForm.get('price')?.invalid && 
+                (createForm.get('price')?.dirty || 
+                createForm.get('price')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{createConstants.priceInvalidText}}</p>
+
+            <label for="create-information"
+                class="text-slate-800 self-start text-lg">{{createConstants.information}}</label>
+            <textarea id="create-information" formControlName="information" rows="4" cols="50"
+                class="shadow-sm border w-full h-12 px-3 py-2 text-slate-800 focus:outline-none focus:border-slate-800 mb-3 "></textarea>
+
+            <p *ngIf="createForm.get('information')?.invalid && 
+                (createForm.get('information')?.dirty || 
+                createForm.get('information')?.touched || 
+                isSubmitted)" class="text-red-500 text-xs ">{{createConstants.informationInvalidText}}</p>
+
+            <button [disabled]="this.createForm.invalid" type="submit" class="btn btn-blue my-4 group  relative"
+                [class.cursor-not-allowed]="createForm.invalid"
+                [class.cursor-pointer]="!createForm.invalid">{{createConstants.btnText}}<span
+                    *ngIf="this.createForm.invalid"
+                    class="opacity-0 group-hover:opacity-100 absolute flex text-red-500 whitespace-nowrap left-24 top-2">
+                    All inputs are required.
+                </span></button>
+
+        </form>
+    </div>
+
+</div>
